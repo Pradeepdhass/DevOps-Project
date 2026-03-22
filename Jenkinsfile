@@ -2,22 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "yourdockerhubusername/ci-cd-app"
+        IMAGE_NAME = "yourdockerhubusername/ci-cd-app"
     }
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git 'git 'https://github.com/Pradeepdhass/jenkins.git''
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("${DOCKER_IMAGE}")
-                }
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
 
@@ -28,8 +20,8 @@ pipeline {
                     usernameVariable: 'USER',
                     passwordVariable: 'PASS'
                 )]) {
-                    sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh "docker push ${DOCKER_IMAGE}:latest"
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                    sh 'docker push $IMAGE_NAME'
                 }
             }
         }
