@@ -78,6 +78,10 @@ h1{
     flex-wrap:wrap;
 }
 
+.pipeline-container{
+    margin-top:50px;  /* increase spacing */
+}
+
 .step{
     background:#1e293b;
     padding:10px 15px;
