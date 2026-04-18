@@ -14,22 +14,24 @@
 }
 
 body{
-    background: radial-gradient(circle at top, #0f172a, #020617);
+    background: radial-gradient(circle at top, #020617, #0f172a);
     color:#fff;
     text-align:center;
 }
 
+/* CONTAINER */
 .container{
     max-width:1100px;
     margin:auto;
     padding:30px;
 }
 
+/* TITLE */
 h1{
     font-size:2.8rem;
     background: linear-gradient(90deg,#38bdf8,#22c55e);
     -webkit-background-clip:text;
-    color:transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 .subtitle{
@@ -50,27 +52,34 @@ h1{
     backdrop-filter: blur(12px);
     border-radius:15px;
     padding:20px;
-    box-shadow:0 0 25px rgba(0,0,0,0.4);
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
     transition:0.3s;
+    border:1px solid rgba(255,255,255,0.08);
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-6px) scale(1.02);
 }
 
 /* STATUS */
 .status{
-    font-size:1.4rem;
+    font-size:1.5rem;
     color:#22c55e;
     margin-top:10px;
     font-weight:bold;
+    animation: glow 1.5s infinite alternate;
 }
 
-/* PIPELINE */
+@keyframes glow{
+    from { text-shadow:0 0 5px #22c55e; }
+    to { text-shadow:0 0 15px #22c55e; }
+}
+
+/* PIPELINE FLOW */
 .pipeline{
     display:flex;
     justify-content:space-between;
-    margin-top:15px;
+    margin-top:20px;
     flex-wrap:wrap;
 }
 
@@ -80,6 +89,11 @@ h1{
     border-radius:10px;
     margin:5px;
     position:relative;
+    transition:0.3s;
+}
+
+.step:hover{
+    background:#334155;
 }
 
 .step::after{
@@ -93,6 +107,28 @@ h1{
 
 .step:last-child::after{
     content:'';
+}
+
+/* PROGRESS BAR */
+.progress{
+    height:8px;
+    width:100%;
+    background:#1e293b;
+    border-radius:10px;
+    margin-top:15px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:100%;
+    background:linear-gradient(90deg,#38bdf8,#22c55e);
+    animation: progress 3s infinite;
+}
+
+@keyframes progress{
+    0%{width:0%;}
+    100%{width:100%;}
 }
 
 /* BADGE */
@@ -154,7 +190,10 @@ and deploys code from GitHub on every commit.
 <div class="card">
 <h2>📊 Build Status</h2>
 <div class="status">✔ SUCCESS</div>
-<span class="badge">Last Build: 2 min ago</span>
+<div class="progress">
+    <div class="progress-bar"></div>
+</div>
+<span class="badge">Last Build: Just Now</span>
 </div>
 
 </div>
