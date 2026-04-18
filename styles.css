@@ -93,7 +93,7 @@ h1{
 .step::after{
     content:'→';
     position:absolute;
-    right:-15px;
+    right:-25px;  /* increased from -15px */
     top:50%;
     transform:translateY(-50%);
     color:#38bdf8;
