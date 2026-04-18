@@ -72,8 +72,9 @@ h1{
 /* PIPELINE FLOW */
 .pipeline{
     display:flex;
-    justify-content:space-between;
-    margin-top:80px;
+    justify-content:center;   
+    gap:60px;                 
+    margin-top:20px;
     flex-wrap:wrap;
 }
 
@@ -93,10 +94,11 @@ h1{
 .step::after{
     content:'→';
     position:absolute;
-    right:-90px;  /* increased from -15px */
+    right:-35px;   
     top:50%;
     transform:translateY(-50%);
     color:#38bdf8;
+    font-size:18px;
 }
 
 .step:last-child::after{
